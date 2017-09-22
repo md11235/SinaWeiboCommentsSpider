@@ -92,6 +92,8 @@ class Weibo(object):
         Resp = requests.get(url, headers=headers, cookies=Cookies)
         page_max_num = Resp.json()['max']
         path = os.getcwd()+'/{dirname}/'.format(dirname=usr_id)
+        if not os.path.isdir(path):
+            os.mkdir(path)
         os.mkdir(path)
         path2 = os.getcwd() + '/%s/%s.csv'%(usr_id,wb_id)
         csvfile = open(path2, 'a+', encoding='utf-8', newline='')
